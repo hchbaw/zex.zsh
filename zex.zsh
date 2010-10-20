@@ -34,6 +34,11 @@
 # TODO: a standalone function.
 # TODO: disable undo when editing the iex buffer or better.
 
+# History
+
+# v0.0.1
+# Initial version.
+
 # Code
 
 bindkey -N zex emacs
