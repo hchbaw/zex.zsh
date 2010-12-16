@@ -4,15 +4,15 @@ example.
 
 1) Interting command outputs with :r.
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/0.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/0.png" />
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/1.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/1.png" />
 
 2) Applying multiple :s commands.
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/2.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/2.png" />
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/3.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/3.png" />
 
 <pre>
 zex: `ex'ish for zsh.
@@ -41,10 +41,10 @@ necessary functions.
 
 Note:
 zex-install-keys replaces some keymap entries. Please beware of.
--- 8< --
+-- &gt;8 --
 '^[:' zex-edit-command-line (emacs)
 ':'   zex-edit-command-line (vicmd)
--- >8 --
+-- 8&lt; --
 
 TODO: execute updated command directly.
 TODO: a standalone function.
