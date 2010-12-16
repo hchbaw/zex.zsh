@@ -5,8 +5,8 @@ declare -a T
 : ${(A)T::=${T# }}
 : ${(A)T::=${T//</&lt;}}
 : ${(A)T::=${T//>/&gt;}}
-: ${(A)T::=${T//8&lt;/>8}}
-: ${(A)T::=${T//&gt;8/8<}}
+#: ${(A)T::=${T//8&lt;/>8}}
+#: ${(A)T::=${T//&gt;8/8<}}
 
 cat <<EOT
 zex:
@@ -15,15 +15,15 @@ example.
 
 1) Interting command outputs with :r.
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/0.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/0.png" />
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/1.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/1.png" />
 
 2) Applying multiple :s commands.
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/2.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/2.png" />
 
-<img src="http://github.com/hchbaw/zex.zsh/raw/readme/3.png" />
+<img src="https://github.com/hchbaw/zex.zsh/raw/readme/3.png" />
 
 <pre>
 $(print -l $T)
