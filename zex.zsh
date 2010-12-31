@@ -122,9 +122,56 @@ zex () {
 }
 zex1 () { "$@" }
 
+_zex_complete () {
+  local s="$zex_BUFFER"
+  [[ -n "$s" ]]       || return
+  [[ -n "$LBUFFER" ]] || return
+  (($#LBUFFER>=2))    || return
+
+  emulate -L zsh
+  setopt extendedglob
+  local -a match mbegin mend
+
+  local c="$LBUFFER[2,2]" # "s/pattern/replacement/"'s "/".
+
+  # XXX: fiddle the prefix value otherwise we lost any backslashes.
+  PREFIX="${LBUFFER//"$'\\\\'"/"$'\\\\\\\\'"}"
+
+  # TODO: compset properly.
+  [[ $LBUFFER == *(#b)$'\\\\'(*) ]] && {
+    local -i num;
+    case "$match" in
+      (([mMvV^*=+]*))
+        ((num=mbegin)) ;;
+      (([z]*))
+        ((num=mbegin+1));;
+    esac
+    compset -p $num
+  }
+  compset -P "*${c:q}"
+
+  { # suffixes
+    local -a a
+    : ${(A)a::=${(M)${(z@)s}:#*${PREFIX}*}}
+    { eval "a=(\${(M)\${(s:$c:z)a}:#*\${PREFIX}*} \$a)" }
+    : ${(A)a::=${a#*${PREFIX}}}
+    : ${(A)a::=${a/(#b)(*)/${PREFIX}${match}}}
+    compadd -V  zex -J zex -S '' -Q \
+      -- $a
+  }
+
+  { # some bad shots
+    # XXX: backslashes make some badnesses.
+    local m='m:{a-z}={A-Z}'; [[ $LBUFFER == *$'\\\\'* ]] || m+=' r:|?=**'
+    compadd -V zex -J zex -S '' -Q -M $m -- ${(z@)s}
+  }
+}
+
 zex-install () {
   bindkey -N zex emacs
   bindkey -M zex "^M" zex-accept-line
+  zle -C zex-complete complete-word _zex_complete
+  bindkey -M zex "^I" zex-complete
 }; zexes+=zex-install
 zex-install
 
