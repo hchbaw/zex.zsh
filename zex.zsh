@@ -69,6 +69,7 @@ with-zex () {
     local ps=$PS1
     local cs=$CURSOR
     local zex_ps=$(echo "%{\e[1;37m%}:%{\e[0m%}")
+    local -a rh; rh=region_highlight; region_highlight=()
     PS1="$ps$BUFFER
 $zex_ps"
     zle reset-prompt
